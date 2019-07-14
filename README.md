@@ -78,6 +78,40 @@ setTimeout(function() {
         }
     }, 50)
 }, 1000)
+
+
+// queues push 1~5
+// message [ '$1' ]
+// get $1
+// queues push 6~10
+// cb $1
+// message [ '$2', '$3', '$4', '$5', '$6' ]
+// get $2
+// cb $2
+// message [ '$3', '$4', '$5', '$6', '$7', '$8', '$9', '$10' ]
+// get $3
+// cb $3
+// message [ '$4', '$5', '$6', '$7', '$8', '$9', '$10' ]
+// get $4
+// cb $4
+// message [ '$5', '$6', '$7', '$8', '$9', '$10' ]
+// get $5
+// cb $5
+// message [ '$6', '$7', '$8', '$9', '$10' ]
+// get $6
+// cb $6
+// message [ '$7', '$8', '$9', '$10' ]
+// get $7
+// cb $7
+// message [ '$8', '$9', '$10' ]
+// get $8
+// cb $8
+// message [ '$9', '$10' ]
+// get $9
+// cb $9
+// message [ '$10' ]
+// get $10
+// cb $10
 ```
 #### Example for parallel, get messages limited by takeNumLimit:
 > **Link:** [[dev source code](https://github.com/yuda-lyu/w-queue/blob/master/sclb.mjs)]
@@ -139,6 +173,40 @@ setTimeout(function() {
         }
     }, 50)
 }, 1000)
+
+
+// queues push 1~5
+// message [ '$1' ]
+// get $1
+// message [ '$2' ]
+// get $2
+// queues push 6~10
+// cb $1
+// message [ '$3', '$4', '$5', '$6' ]
+// get $3
+// cb $2
+// message [ '$4', '$5', '$6', '$7' ]
+// get $4
+// cb $3
+// message [ '$5', '$6', '$7', '$8', '$9', '$10' ]
+// get $5
+// cb $4
+// message [ '$6', '$7', '$8', '$9', '$10' ]
+// get $6
+// cb $5
+// message [ '$7', '$8', '$9', '$10' ]
+// get $7
+// cb $6
+// message [ '$8', '$9', '$10' ]
+// get $8
+// cb $7
+// message [ '$9', '$10' ]
+// get $9
+// cb $8
+// message [ '$10' ]
+// get $10
+// cb $9
+// cb $10
 ```
 
 ### In a browser(UMD module):
@@ -206,4 +274,38 @@ setTimeout(function() {
         }
     }, 50)
 }, 1000)
+
+
+// queues push 1~5
+// message [ '$1' ]
+// get $1
+// queues push 6~10
+// cb $1
+// message [ '$2', '$3', '$4', '$5', '$6' ]
+// get $2
+// cb $2
+// message [ '$3', '$4', '$5', '$6', '$7', '$8', '$9', '$10' ]
+// get $3
+// cb $3
+// message [ '$4', '$5', '$6', '$7', '$8', '$9', '$10' ]
+// get $4
+// cb $4
+// message [ '$5', '$6', '$7', '$8', '$9', '$10' ]
+// get $5
+// cb $5
+// message [ '$6', '$7', '$8', '$9', '$10' ]
+// get $6
+// cb $6
+// message [ '$7', '$8', '$9', '$10' ]
+// get $7
+// cb $7
+// message [ '$8', '$9', '$10' ]
+// get $8
+// cb $8
+// message [ '$9', '$10' ]
+// get $9
+// cb $9
+// message [ '$10' ]
+// get $10
+// cb $10
 ```
