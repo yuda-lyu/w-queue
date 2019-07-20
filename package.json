@@ -1,6 +1,6 @@
 {
   "name": "w-queue",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An operator for queues.",
   "main": "dist/w-queue.umd.js",
   "dependencies": {},

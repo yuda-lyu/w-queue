@@ -18,14 +18,14 @@ To view documentation or get support, visit [docs](https://yuda-lyu.github.io/w-
 ```alias
 npm i w-queue
 ```
-#### Example for default, get messages one by one:
+#### Example for geting messages one by one:
 > **Link:** [[dev source code](https://github.com/yuda-lyu/w-queue/blob/master/scla.mjs)]
 ```alias
 import WQueue from 'w-queue'
 
 
 //wq
-let wq = new WQueue() //default takeNumLimit=1
+let wq = new WQueue({ takeNumLimit: 1 })
 
 
 //message
@@ -113,7 +113,7 @@ setTimeout(function() {
 // get $10
 // cb $10
 ```
-#### Example for parallel, get messages limited by takeNumLimit:
+#### Example for parallel, messages are limited by 2 events:
 > **Link:** [[dev source code](https://github.com/yuda-lyu/w-queue/blob/master/sclb.mjs)]
 ```alias
 import WQueue from 'w-queue'
@@ -208,20 +208,101 @@ setTimeout(function() {
 // cb $9
 // cb $10
 ```
+#### Example for parallel, get messages with no restriction:
+> **Link:** [[dev source code](https://github.com/yuda-lyu/w-queue/blob/master/sclb.mjs)]
+```alias
+import WQueue from 'w-queue'
+
+
+//wq
+let wq = new WQueue() //default takeNumLimit=0, not limit
+
+
+//message
+wq.on('message', function(qs) {
+    console.log('message', qs)
+
+    //get
+    let v = wq.get()
+    if (!v) {
+        return
+    }
+    console.log('get', v)
+
+    setTimeout(function() {
+        console.log('cb', v)
+
+        //cb
+        wq.cb()
+
+    }, 1000)
+
+})
+
+
+//n
+let n = 0
+
+
+//queues push 1~10
+setTimeout(function() {
+    console.log('queues push 1~10')
+    let t = setInterval(function() {
+        n += 1
+        wq.push('$' + n)
+        if (n === 10) {
+            clearInterval(t)
+        }
+    }, 1)
+}, 1)
+
+
+// queues push 1~10
+// message [ '$1' ]
+// get $1
+// message [ '$2' ]
+// get $2
+// message [ '$3' ]
+// get $3
+// message [ '$4' ]
+// get $4
+// message [ '$5' ]
+// get $5
+// message [ '$6' ]
+// get $6
+// message [ '$7' ]
+// get $7
+// message [ '$8' ]
+// get $8
+// message [ '$9' ]
+// get $9
+// message [ '$10' ]
+// get $10
+// cb $1
+// cb $2
+// cb $3
+// cb $4
+// cb $5
+// cb $6
+// cb $7
+// cb $8
+// cb $9
+// cb $10
+```
 
 ### In a browser(UMD module):
 > **Note:** `w-queue` does't depend on any package.
 
 [Necessary] Add script for w-queue.
 ```alias
-<script src="https://cdn.jsdelivr.net/npm/w-queue@1.0.0/dist/w-queue.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/w-queue@1.0.1/dist/w-queue.umd.js"></script>
 ```
 #### Example:
 > **Link:** [[dev source code](https://github.com/yuda-lyu/w-queue/blob/master/web.html)]
 ```alias
 //wq
 let WQueue = window['w-queue']
-let wq = new WQueue()
+let wq = new WQueue({ takeNumLimit: 1 })
 
 
 //message
