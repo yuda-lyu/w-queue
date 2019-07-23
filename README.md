@@ -253,7 +253,7 @@ setTimeout(function() {
         if (n === 10) {
             clearInterval(t)
         }
-    }, 1)
+    }, 50)
 }, 1)
 
 
