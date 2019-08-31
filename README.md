@@ -295,7 +295,7 @@ setTimeout(function() {
 
 [Necessary] Add script for w-queue.
 ```alias
-<script src="https://cdn.jsdelivr.net/npm/w-queue@1.0.11/dist/w-queue.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/w-queue@1.0.12/dist/w-queue.umd.js"></script>
 ```
 #### Example:
 > **Link:** [[dev source code](https://github.com/yuda-lyu/w-queue/blob/master/web.html)]

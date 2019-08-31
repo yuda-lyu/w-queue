@@ -1,6 +1,6 @@
 {
   "name": "w-queue",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "An operator for queues.",
   "main": "dist/w-queue.umd.js",
   "dependencies": {},
@@ -42,7 +42,7 @@
     "vue-template-compiler": "^2.6.10"
   },
   "scripts": {
-    "test": "mocha --require @babel/register",
+    "test": "./node_modules/.bin/mocha --require @babel/register",
     "deploy": "gh-pages -d docs"
   },
   "repository": {
