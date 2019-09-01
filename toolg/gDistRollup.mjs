@@ -10,7 +10,6 @@ rollupFiles({
     fns: getFiles(fdSrc),
     fdSrc,
     fdTar,
-    //hookNameDist: () => 'wsemi',
     nameDistType: 'kebabCase',
     globals: {
     },
