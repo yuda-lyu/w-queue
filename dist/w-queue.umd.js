@@ -1,6 +1,7 @@
 /*!
- * w-queue v1.0.14
+ * w-queue v1.0.15
  * (c) 2018-2019 yuda-lyu(semisphere)
  * Released under the MIT License.
- */(function(a,b){"object"==typeof exports&&"undefined"!=typeof module?module.exports=b():"function"==typeof define&&define.amd?define(b):(a=a||self,a["w-queue"]=b())})(this,function(){'use strict';function a(){var a={};return{on:function(b,c){a[b]||(a[b]=[]),a[b].push(c)},emit:function(b){if(a[b]){for(var c=arguments.length,d=Array(1<c?c-1:0),e=1;e<c;e++)d[e-1]=arguments[e];for(var f=0;f<a[b].length;f++){var g;(g=a[b])[f].apply(g,d)}}}}}return function(){function b(a){e.push(a),(0>=c.takeNumLimit||d<c.takeNumLimit)&&f.emit("message",e)}var c=0<arguments.length&&void 0!==arguments[0]?arguments[0]:{};c.takeNumLimit||(c.takeNumLimit=0);var d=0,e=[],f=new a;return f.get=function(){if(0<e.length){d+=1;var a=e.splice(0,1)[0];return a}return null},f.cb=function(){d-=1,0<e.length&&f.emit("message",e)},f.push=b,f}});
+ */
+!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t():"function"==typeof define&&define.amd?define(t):(e=e||self)["w-queue"]=t()}(this,(function(){"use strict";function e(){var e={};return{on:function(t,n){e[t]||(e[t]=[]),e[t].push(n)},emit:function(t){if(e[t]){for(var n=arguments.length,i=new Array(n>1?n-1:0),u=1;u<n;u++)i[u-1]=arguments[u];for(var o=0;o<e[t].length;o++){var f;(f=e[t])[o].apply(f,i)}}}}}return function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};t.takeNumLimit||(t.takeNumLimit=0);var n=0,i=[],u=new e;return u.get=function(){return i.length>0?(n+=1,i.splice(0,1)[0]):null},u.cb=function(){n-=1,i.length>0&&u.emit("message",i)},u.push=function(e){i.push(e),(t.takeNumLimit<=0||n<t.takeNumLimit)&&u.emit("message",i)},u}}));
 //# sourceMappingURL=w-queue.umd.js.map
